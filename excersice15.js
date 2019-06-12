@@ -7,39 +7,42 @@ Los impuestos que debe pagar son el 16% de sus ingresos menos el total
 
 
 const lista_ingresos = {
-    pesos: [15000, 15500]
+    pesos: [15000, 15500],
+    lista_gastos: [
+        {
+            concepto: "gym",
+            gasto: 700,
+        },
+        {
+            concepto: "despensa",
+            gasto: 1500,
+        },{
+            concepto: "cine",
+            gasto: 500,
+        },
+        {
+            concepto: "salud",
+            gasto: 2000,
+        },
+
+
+    ]
 }
-
-const lista_gastos = [
-    {
-        gastos: "gym",
-        totalgastos: 700
-    },
-    {
-        gastos: " super",
-        totalgastos: 2000
-    },
-    {
-        gastos: "diversion",
-        totalgastos: 3499
-    },]
-
-let i = 0;
+let i = 0
 let j = 0
 let salario_total = 0
 let gastos = 0
-
 for (i; i < lista_ingresos.pesos.length; i++) {
     salario_total = salario_total + lista_ingresos.pesos[i]
-} let impuestos = salario_total * 0.16
-let total = salario_total - impuestos
+} 
+for (j; j < lista_ingresos.lista_gastos.length; j++) {
+    if (lista_ingresos.lista_gastos[j].concepto == 'salud'){
+        gastos +=  lista_ingresos.lista_gastos[j].gasto;
+        //console.log(gastos)
+    }
 
-for (j; j < lista_gastos.length; j++) {
-    gastos = gastos + lista_gastos[j].totalgastos
 }
-let final = total - gastos
-console.log('tu salario menos el 16%  es de: $' + total +
-    ' pagas de impuestos $' + impuestos + '\n' +
-    'tus gastos (concepto salud) : $' + gastos + '\n' +
-    'Los impuestos que debe pagar son el 16% de sus ingresos menos el tota de gastos $' + final
-)
+    let impuestos = (salario_total - gastos) * 0.16
+    //let total = salario_total - impuestos
+    console.log('impuestos a pagar $' + impuestos)
+
